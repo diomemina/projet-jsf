@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+	
+	
+	
+	
+	<h:head>
+   <title>Facelet Title</title>
+   <!-- Lien style.css -->
+   <link href="style.css" rel="stylesheet"/>
+</h:head>
+  
+<h:body>
+
+  <h1>Liste des Etudiants</h1>
+	<h:form>
+		<p:dataTable value="#{etudiantBean.pisteEtudiant}" var="e">
+			<p:column>
+				<f:facet name="header">ID </f:facet>
+        #{e.id}
+      </p:column>
+
+			<p:column>
+				<f:facet name="header">Nom </f:facet>
+        #{e.nom}
+      </p:column>
+
+			<p:column>
+				<f:facet name="header">Prenom </f:facet>
+        #{e.prenom}
+      </p:column>
+
+			<p:column>
+				<f:facet name="header">DateNais </f:facet>
+        #{e.datenais}
+      </p:column>
+
+			<p:column colspan="2">
+				<f:facet name="header">Operations </f:facet>
+				<div class="row box-space-top">
+				<h:panelGroup styleClass="label">
+				<h:commandLink action="#{etudiantBean.deleteEtudiant(e)}" value="Supprimer"
+				onclick="return confirm('voulez-vous supprimer l étudiant')"/>
+				</h:panelGroup> <br/>
+				<h:panelGroup styleClass="field">
+				<h:commandLink action="#{etudiantBean.affiche(e)}" value="Mettre à jour"/>
+				</h:panelGroup>
+				</div>
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+	
+	<div class="#{etudiantBean.modif?'cache':'null'}">
+	<h1>Creer un Etudiant</h1>
+	<h:form>
+		<p:panelGrid columns="2">
+
+			<p:outputLabel value="Nom:" />
+			<h:message for="nom" />
+			<p:inputText value="#{etudiantBean.etudiant.nom}"
+			required="true" RequiredMessages="Ce champ est obligatoire"
+			showOn="both" a:placeholder="Saisir Votre Nom:" />
+				
+			<br></br>
+
+			<p:outputLabel value="Prenom:" />
+			<h:message for="prenom" />
+			<p:inputText value="#{etudiantBean.etudiant.prenom}" 
+			required="true" RequiredMessages="Ce champ est obligatoire"
+			showOn="both" a:placeholder="Saisir Votre prenom:"> 
+			</p:inputText>
+				
+			<br></br>
+
+			<p:outputLabel value="DateNais:" />
+			<h:message for="datenais" />
+			<p:calendar id="datenais" value="#{etudiantBean.date}"
+				required="true" RequiredMessages="Ce champ est obligatoire"
+				showOn="both" a:placeholder="Saisir votre date de naissance">
+				
+				</p:calendar>
+				<br></br>
+		</p:panelGrid>
+
+		<br></br>
+		<h:commandButton
+			action="#{etudiantBean.ajouterEtudiant(etudiantBean.etudiant)}"
+			value="Ajouter un etudiant" />
+	</h:form>
+	</div>
+	
+	
+	<div class="#{etudiantBean.modif?'null':'cache'}">
+	<h1>Editer un Etudiant</h1>
+	<h:form>
+		<p:panelGrid columns="2">
+		<p:outputLabel value="Nom:" />
+			<h:message for="nom" />
+			<p:inputText value="#{etudiantBean.etudiant.nom}"
+			required="true" RequiredMessages="Ce champ est obligatoire"
+			showOn="both" a:placeholder="Saisir Votre Nom:" />
+			<br></br>
+    	<p:outputLabel value="Prenom:" />
+			<h:message for="prenom" />
+			<p:inputText value="#{etudiantBean.etudiant.prenom}" 
+			required="true" RequiredMessages="Ce champ est obligatoire"
+			showOn="both" a:placeholder="Saisir Votre prenom:" > 
+			</p:inputText>
+			<br></br>
+         <p:outputLabel value="DateNais:" />
+			<h:message for="datenais" />
+			<p:calendar id="datenais" value="#{etudiantBean.date}"
+				required="true" RequiredMessages="Ce champ est obligatoire"
+				showOn="both" a:placeholder="Saisir votre date de naissance">
+		</p:calendar>
+		  <br></br>
+		</p:panelGrid>
+           <br></br>
+		<h:commandButton
+			action="#{etudiantBean.modifEtudiant()}"
+			value="mettre à jour" />
+	</h:form>
+	</div>
+	<br></br>
+	
+	<p:accordionPanel>
+	  <p:tab title="Affichage des etudiants">
+	   <f:view>
+	    <h:form>
+	      <h1> </h1>
+	      <p:tab title="Etudiant1" value="#{etudintBean.listeEtudiant}">Aminata Diome</p:tab><br></br>
+	      <p:tab title="Etudiant2" value="#{etudintBean.listeEtudiant}">Racky Aidara</p:tab><br></br>
+	      <p:tab title="Etudiant3" value="#{etudintBean.listeEtudiant}">Mame Diarra Naine</p:tab><br></br>
+	      <p:tab title="Etudiant4" value="#{etudintBean.listeEtudiant}">Madiop Wade</p:tab>
+	    </h:form>
+	   </f:view>
+	  </p:tab>
+	</p:accordionPanel>
+	
+
+</h:body>
+
+
+</html>

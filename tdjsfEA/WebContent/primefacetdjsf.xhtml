@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+     <h:head>
+  <title>les composants de primefaces</title>
+</h:head>
+
+ <h:body>
+      <h1>Exemples Carousel</h1>
+     <p:carousel autoPlayInterval="2000" effect="easeStrong" circular="true"
+     itemStyle="widht:400px"> 
+     <p:graphicImage width="200" value="/images/1.jpg"></p:graphicImage>
+     <p:graphicImage width="200" value="/images/2.jpg"></p:graphicImage>
+     <p:graphicImage width="200" value="/images/3.jpg"></p:graphicImage>
+     <p:graphicImage width="200" value="/images/4.jpg"></p:graphicImage>
+     <p:graphicImage width="200" value="/images/5.jpg"></p:graphicImage>
+     <p:graphicImage width="200" value="/images/6.jpg"></p:graphicImage>
+     </p:carousel>
+     
+     <h1>Exemple ContentFlow</h1>
+      <p:contentFlow var="img" width="200" value="#{etudiantBean.etudiant.imag}">
+     <p:graphicImage value="/images/#{img}" styleClass="content"></p:graphicImage>
+     </p:contentFlow>
+     
+     <p:galleria var="img"  width="200" value="#{etudiantBean.etudiant.imag}">
+     <p:graphicImage value="/images/#{img}" title="titre" alt="description"></p:graphicImage>
+     </p:galleria>
+     
+     <h1>Exemple Color Picker</h1>
+     <h:form>
+       <p:colorPicker value="#{etudiantBean.etudiant.color}" mode="inline"></p:colorPicker>
+       <h:commandButton  value="valider" />
+       Couleur=<h:outputText value="#{etudiantBean.etudiant.color}" />
+     </h:form>
+     
+      <h1>Exemple Dock</h1>
+      <p:dock>
+        <p:menuitem value="Home" icon="/images/1.png" url="#"/>
+        <p:menuitem value="Home" icon="/images/music.png" url="#"/>
+        <p:menuitem value="Home" icon="/images/video.png" url="#"/>
+        <p:menuitem value="Home" icon="/images/email.png" url="#"/>
+        <p:menuitem value="Home" icon="/images/link.png" url="#"/>
+        <p:menuitem value="Home" icon="/images/rss.png" url="#"/>
+        <p:menuitem value="Home" icon="/images/history.png" url="#"/>
+      </p:dock>
+      
+       <h1>Exemple GMap</h1>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15435.056584563115!2d-17.2592768!3d14.7259222!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xec19f96c815771b%3A0x5ade95cb335a448!2sYoussou%20Mbargane!5e0!3m2!1sfr!2ssn!4v1702319093530!5m2!1sfr!2ssn" 
+      width="1200" height="450" style="border:0;width:100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <script src="https://maps.google.com/maps/api/js?key=?sensor=true"  type="text/javascript"></script>
+      
+       <br/><br/>
+     <p:keyboard value="cliquer ici"></p:keyboard>
+     
+ </h:body>
+     
+
+</html>
